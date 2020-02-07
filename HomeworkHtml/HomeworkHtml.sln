@@ -5,6 +5,14 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WebApp", "WebApp\WebApp.vbproj", "{E59FE7EA-3569-41C6-97C0-43ABFC4F3417}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ejercicio1 Bootstrap", "ejercicio1 Bootstrap", "{81ADC541-9AD3-4CBD-9A1D-37F88832B09A}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EjercicioBootstrap", "EjercicioBootstrap\EjercicioBootstrap.vbproj", "{A4EC003B-F5EC-4AF6-A5C0-84BA60BE18BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cruz de Aravaca", "Cruz de Aravaca", "{0340C011-B4EA-47E6-BD0B-CC40BD71388C}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Cruz", "Cruz\Cruz.vbproj", "{4D0C410B-E8EC-484A-B825-3E5B1C5102DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +23,21 @@ Global
 		{E59FE7EA-3569-41C6-97C0-43ABFC4F3417}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E59FE7EA-3569-41C6-97C0-43ABFC4F3417}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E59FE7EA-3569-41C6-97C0-43ABFC4F3417}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4EC003B-F5EC-4AF6-A5C0-84BA60BE18BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4EC003B-F5EC-4AF6-A5C0-84BA60BE18BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4EC003B-F5EC-4AF6-A5C0-84BA60BE18BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4EC003B-F5EC-4AF6-A5C0-84BA60BE18BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D0C410B-E8EC-484A-B825-3E5B1C5102DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D0C410B-E8EC-484A-B825-3E5B1C5102DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D0C410B-E8EC-484A-B825-3E5B1C5102DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D0C410B-E8EC-484A-B825-3E5B1C5102DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A4EC003B-F5EC-4AF6-A5C0-84BA60BE18BB} = {81ADC541-9AD3-4CBD-9A1D-37F88832B09A}
+		{4D0C410B-E8EC-484A-B825-3E5B1C5102DC} = {0340C011-B4EA-47E6-BD0B-CC40BD71388C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3FCBE534-3DDA-4CEA-AB20-EE8F216E9F05}

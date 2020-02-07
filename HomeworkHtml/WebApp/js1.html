@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Demo1 - Javascript</title>
+</head>
+<body>
+    <script>
+        console.log("Programa Iniciado");
+        var nombre   = "Cristhian";
+        var apellido = "Lammoglia";
+        var apellido2;
+        var fullname = nombre + ' ' + apellido + ' ' + apellido2;
+
+        var nombre = "Daniel";
+        document.writeln(fullname + '<br/>');
+        document.writeln(nombre + ' ' + apellido + ' ' + apellido2 + '<br/>');
+
+        function Test() {
+            //var nombre = "Cristina"; quitamos variable reservada
+            //y la dejamos global quitandole el var
+            //ahora nombre = "Cristina seria el nuevo nombre de variable global var nombre = "Daniel" line15
+            nombre = "Cristina"
+            document.writeln('P1: '+nombre + ' ' + apellido + ' ' + apellido2 + '<br/>');
+        }
+
+        function Test2() {
+            document.writeln('P2: '+ nombre + ' ' + apellido + ' ' + apellido2 + '<br/>');
+        }
+
+        Test();
+        Test2();
+
+
+
+        
+        console.log("Programa Finalizado");
+        
+
+    </script>
+    <noscript>No es posible ejecutar: Navegador no soporta javascript</noscript>
+    <!--esta etiqueta nonscript se muestra cuando el navegador
+        no es capaz de interpretar codigo javascript-->
+</body>
+</html>

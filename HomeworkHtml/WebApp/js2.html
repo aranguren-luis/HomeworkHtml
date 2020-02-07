@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Demo2 Javascript</title>
+</head>
+<body>
+    <script>
+        //vamos a acrear un singleton que es una megavariable
+        //las llaves {}crepresentas a Objetos en programacion
+        //core se usa generalmente para agrupar variables
+        //Process agrupa las funciones/metodos
+        //Init ejecucion de funciones
+        var app = {
+            core: {
+                Nombre   : '',
+                Apellido1: '',
+                Apellido2: ''
+            },//final de core
+            Process: {
+                Contador: 0,
+                Test1: function (n) {
+                    app.core.Nombre = n;
+                    //document.writeln(app.core.Nombre+' '+app.core.Apellido1+' '+app.core.Apellido2);
+                    app.Process.Test2();
+                };
+                Test2: function () {
+                    document.writeln(app.core.Nombre+' '+app.core.Apellido1+' '+app.core.Apellido2);
+                };
+            },//final de Process 
+            Init: {
+                Demo: function (n, a1, a2) {
+                    app.core.Nombre    = n: ;
+                    app.core.Apellido1 = a1: ;
+                    app.core.Apellido2 = a2: ;
+                };//final Demo
+            }
+        };
+        //Asignamos los valores de entrada al Singleton n, a1 y a2:
+        app.Init.Demo('Cristhian', 'Lammoglia', 'Contreras');
+        app.Process.Test2();
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Demo3 Condicionales</title>
+</head>
+<body>
+    <script>
+        var app = {
+            demos: {
+                contador: function (inicio,final,step) {
+                    //la suma tambien puede ser i++, pero el requerimiento es que sumara de 10 en 10. 
+                    //(i != 101) ? document.writeln(i + '/') : document.writeln(i);
+                    //si i es distinto de 101, imprime i, else imprime lo otro
+                    for (var i = inicio; i < final + 1; i = i + step) {
+                        document.writeln(i);
+                        if (i != final) {
+                            document.writeln('/');
+                        }
+                    }
+                }
+            }
+        }
+        //el prompt permite ("mensaje", valor)
+        var salto  = prompt('Ingresa Nro de Saltos: ');
+        var salto1 = prompt('Ingresa Nro de Inicio: ');
+        var salto2 = prompt('Ingresa final de Salto: ');
+        var step   = parseInt(salto);
+        var inicio = parseInt(salto1);
+        var final  = parseInt(salto2);
+        app.demos.contador(inicio,final,step);
+        //app.demos.contador(parseInt(prompt('Ingresa Nro de Salto:')));
+    </script>
+</body>
+</html>
