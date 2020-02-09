@@ -1,0 +1,40 @@
+﻿* {
+    padding: 0%;
+    margin-bottom: 0%;
+}
+
+nav {
+    height: 50px;
+    background-color: black;
+}
+
+ul{
+    list-style-type:none; 
+}
+
+li {
+    float: left; /*float left hace la lista horizontal*/
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+a{
+    /*text-decoration:none;
+    font-family:Arial;
+    font-size:16px;*/
+}
+
+ul li a:hover{
+    text-decoration:none; /*text-deco... : none elimina el underline de los enlaces (a href)*/
+    font-size:20px;
+    color:white;
+}
+
+li a {
+    color: ghostwhite;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+}
+
+
