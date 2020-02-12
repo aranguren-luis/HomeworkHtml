@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h2>Tabla de Multiplicar</h2>
+        <div class="form-group">
+            <label><strong>Ingrese Numero: </strong></label>
+            <input id="f1" class="form-control" autofocus/>
+        </div>
+        <div class="col-3">
+            <button id="b1" class="btn btn-block btn-success">Calcular</button>
+        </div>
+        <div class="col-6 text-center">
+            <h1 class="text-success">
+                <b>...</b>
+            </h1>
+        </div>
+    </div>
+    <script>
+        var boton = document.getElementById('b1'); /*boton generar letra*/
+        boton.onclick = function () {
+            var i1 = document.getElementById('f1'); /*obtiene el contenido del primer input*/
+            var a = parseFloat(i1.value); /*almacena y convierte el valor contenido en primer input*/
+            for (i = 0; i < 11; i = i++) {
+                //var multi = a * i;con esta linea lo estaba arruinando
+                var ver = document.getElementsByTagName('b')[0];/*almacena y se asocia a la etiqueta b*/
+                ver.innerHTML = ver.innerHTML + '<h1>'/*incorpora el contenido de variable ver a la etiqueta b de html*/
+                
+            };
+            
+        };
+    </script>
+</body>
+</html>

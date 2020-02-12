@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container" style="width:800px; height:auto; text-align:center">
+        <h1>Calcular DNI</h1><br /><br />
+        <div class="row">
+            <div class="col-3">
+                <div class="form-group">
+                    <label><strong>Ingrese Numeros: </strong></label>
+                    <input id="f1" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <button id="b1" class="btn btn-block btn-success">Generar Letra</button>
+        </div>
+        <br />
+        <br />
+        <div class="col-6 text-center">
+            <h1 class="text-success">
+                <b>...</b>
+            </h1>
+        </div>
+    </div>
+    <script>
+        var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V’', 'H', 'L', 'C', 'K', 'E', 'T'];
+        var boton = document.getElementById('b1'); /*boton generar letra*/
+        boton.onclick = function () {
+            var i1 = document.getElementById('f1'); /*obtiene el contenido del primer input*/
+            var a = parseFloat(i1.value); /*almacena y convierte el valor contenido en primer input*/
+            letra = a % 23;
+            res = a + letras[letra];
+            var ver = document.getElementsByTagName('b')[0];/*almacena y se asocia a la etiqueta b*/
+            ver.innerHTML = res; /*incorpora el contenido de variable ver a la etiqueta b de html*/
+            i1 = '';
+        };
+    </script>
+</body>
+</html>

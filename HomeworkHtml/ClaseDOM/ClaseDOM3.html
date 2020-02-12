@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">    </div>
+
+            <div class="col-12">    </div>
+
+            <div class="col-12">
+                <div class="form-group">
+                    <input id="f1" class="form-control" autofocus />
+                </div>
+            </div>
+        </div><!--cierra el row-->
+
+        <button class="btn btn-outline-danger" id="b1">Ejecutar JS</button>
+        <button class="btn btn-outline-success" id="b2">Ejecutar JS</button>
+        <button class="btn btn-outline-warning" id="b3">Ejecutar JS</button>
+    </div> <!--cierra container-->
+
+    <script>
+        var columna = document.getElementsByClassName('col-12')[0];
+        var columna2 = document.getElementsByClassName('col-12')[1];
+        var columna3 = document.getElementsByClassName('col-12')[2];
+        document.getElementById('b1').onclick = function () {
+            columna.innerHTML = '<h1>hola mundo!</h1><hr/>';
+        };
+        document.getElementById('b2').onclick = function () {
+            funciones.pintar1();
+        }
+        var funciones = {
+            pintar1: function () {
+                for (var i = 0; i < 101; i = i + 5) {
+                    columna2.innerHTML += '<p>' + i + '</p>'; //usamos el += para ir agregando valores, no sustituirlos
+                };
+            }; //Cierra pinta1 del 1 al 100 de 5 en 5 
+            parimpar: function () { 
+                pares = parseFloat(document.getElementById('f1')[0]);
+                if (pares % 2 == 0) {
+                    columna3.innerHTML('es par');
+                };
+                else: {
+                columna.innerHTML('es impar');
+            };
+        }
+        };
+    </script>
+</body>
+</html>

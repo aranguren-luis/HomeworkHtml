@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <style>
+        /*input:valid{
+            border:groove solid 5px;
+
+        }
+        input:invalid{
+            background-color:black;
+            color:white;
+            border: red solid 4px;
+        }*/
+    </style>
+</head>
+<body>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form method="get" action="" onsubmit="return ValidarDatos();"></form>
+                    <h1>Formulario de Pruebas</h1>
+                    <hr />
+                    <form action="" method="get">
+                        <!--Si no agregamos name="" no se envian los datos del formulario-->
+                        <fieldset>
+                            <legend>Datos Personales</legend>
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input placeholder="introduce nombre" id="nombre" name="nombre" class="group-control" required autofocus />
+                            </div>
+                            <div class="form-group">
+                                <label>apellido</label>
+                                <input placeholder="introduce apellido" id="apellido1" name="apellido1" class="group-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Segundo Apellido</label>
+                                <input id="apellido2" name="apellido2" class="group-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Fecha Nacimiento</label>
+                                <input title="dd/mm/aaaa" pattern="(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d" id="nacimiento" name="nacimiento" class="group-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" id="password" name="password" class="group-control" />
+                                <span class="text-danger" id="s1"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Repite Password</label>
+                                <input type="password" placeholder="repetir password" id="repite" name="repite" class="group-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="email" name="email" class="group-control" />
+                            </div>
+                            <!--<div class="form-group">
+                <label>Email</label>
+                <input id="email" name="email" class="group-control" />
+            </div>-->
+                        </fieldset>
+                        <fieldset>
+                            <legend>Direccion</legend>
+                            <div class="form-group">
+                                <label>Domicilio</label>
+                                <input id="domicilio" name="domicilio" class="group-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Codigo Postal</label>
+                                <input id="cp" name="cp" class="group-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Poblacion</label>
+                                <input id="poblacion" name="poblacion" class="group-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Provincia</label>
+                                <input id="provincia" name="provincia" class="group-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Pais</label>
+                                <select id="pais" name="pais" class="group-control">
+                                    <optgroup label="Europa">
+                                        <option value="34">Portugal</option>
+                                        <option value="35" selected>Italia</option>
+                                        <option value="36">Francia</option>
+                                    </optgroup>
+                                    <optgroup label="America">
+                                        <option value="34">Mexico</option>
+                                        <option value="35">EEUU</option>
+                                        <option value="36">Canada</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </fieldset>
+                        <div class="form-group">
+                            <label>Fotos</label>
+                            <input type="file" id="foto" name="foto" class="btn  form-control form-control-file" />
+                        </div>
+                        <div class="form-group">
+                            <label>Comentarios</label>
+                            <textarea rows="10" id="area" name="area" class="form-control"></textarea>
+                            <span id="s2" maxlength="300" class="text-success">300</span>
+                        </div>
+                        <!--<div class="form-group">
+            <label>Aficiones</label><br />
+            <input type="checkbox" id="c1" name="aficiones" checked/>Gym<br />
+            <input type="checkbox" id="c2" name="aficiones" />Natacion<br />
+            <input type="checkbox" id="c3" name="aficiones" />Netflix<br />
+        </div>-->
+                        <div class="form-group">
+                            <label>Fumador</label><br />
+                            <input type="radio" name="fuma" />Si<br />
+                            <input type="radio" name="fume" checked />No<br />
+                        </div>
+                        <button type="submit" class="btn btn-success">Enviar</button>
+                        <button type="reset" class="btn btn-warning">Reset</button>
+                        <!--<button type="button" class="btn btn-danger">no Hace Nada</button>-->
+                        <input type="submit" class="btn btn-success" value="Enviar" />
+                        <input type="reset" class="btn btn-warning" value="Reset" />
+                        <!--<input type="button" class="btn btn-success" value="Nada" />-->
+                    </form>
+
+                    <br />
+                    <br />
+                    <br />
+            </div>
+        </div>
+    </div>
+    <script>
+            document.getElementById('password').onkeypress = function (e) {
+                document.getElementById('s1').innerHTML = '';
+            };
+
+            document.getElementById('area').onkeypress = function (e) {
+                var x = parseFloat(300 - document.getElementById('area').value.length);
+                //s2.innerHTML = x;
+                if (x > 26) document.getElementById('s2').innerHTML = '<span class="text-success">' + x + '</span>';
+                else document.getElementById('s2').innerHTML = '<span class="text-danger">' + x + '</span>';
+
+            };
+        function ValidarDatos() {
+            var pass1 = document.getElementById('password').value;
+            var pass1 = document.getElementById('repite').value;
+
+            if (pass1 === repite) return true;
+            else {
+                document.getElementById('s1').innerHTML('No coinciden');
+                document.getElementById('password').focus();
+                return false;
+            };
+            };
+    </script>
+</body>
+</html>

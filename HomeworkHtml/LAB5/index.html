@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Conexion Remota</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="Container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-10">
+                <h1>Consulta Temperatura</h1><hr />
+                <input class="form-control" /><br />
+                <button id="b1" class="btn btn-block btn-primary">Consultar</button>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row">
+            <div style="text-align:center" class="col"></div>
+            <div class="col-8">
+
+            </div>
+        </div>
+        
+    </div>
+    <script>
+        document.getElementById('b1').onclick = function () {
+            //DEMO Conexion Remota con un Microservicio/ APIRest
+
+        //paso 1: Crear Objeto XMLhttpRequest
+        var xhr = new XMLHttpRequest();
+
+        //Configurar le objeto XMLHttpRequest para la conexion remota
+        //input .value nos tare lo que ingresa el usuario 
+        var ciudad = document.getElementsByTagName('input')[0].value;
+        var datos = 'q='+ciudad+'&units=metric&appid=613279dbd38c117661cc13b5317a5c44';
+        var url = 'https://api.openweathermap.org/data/2.5/weather?'+datos; 
+
+        //con true le asignamos comunicacion asincrona
+        xhr.open('POST', url, true);
+
+        //Opcionalmente agregamos informacion a la cabecera HEAD
+        xhr.setRequestHeader('Content-type', 'text/plain');
+
+        //Capturar  el evento con onReadyStateChange que se produce cuando cambia el estado de la conexion 
+        //e significa parametro Event, relacionada a eventos 
+        xhr.onreadystatechange = function (e) {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    //Leemos y mostramos el resultado
+                    var respuesta = JSON.parse(xhr.responseText);
+                    //document.getElementsByTagName('body')[0].innerHTML = '<h1><b>Temperatura:</b>'+respuesta.main.temp+'<h1/>';
+                    document.getElementsByClassName('col-8')[0].innerHTML = '<h1><b>Temperatura :</b>'+respuesta.main.temp+'<h1/><br/>';
+                    document.getElementsByClassName('col-8')[0].innerHTML += '<h1><b>Humedad :</b>'+respuesta.main.humidity+'<h1/></br>';
+                    document.getElementsByClassName('col-8')[0].innerHTML += '<h1><b>Sens. Term :</b>'+respuesta.main.feels_like+'<h1/></br>';
+                    document.getElementsByClassName('col-8')[0].innerHTML += '<h1><b>Max Temp :</b>'+respuesta.main.temp_min+'<h1/></br>';
+                    document.getElementsByClassName('col-8')[0].innerHTML += '<h1><b>Min Temp :</b>'+respuesta.main.temp_max+'<h1/></br>';
+                } else {
+                    //Podemos mostrar el error enviado como respuesta
+                    document.getElementsByTagName('body')[0].innerHTML = 'Error ' + xhr.status + ' ' + xhr.statusText;
+                };
+            } else {
+                //Podemos ir mostrando el estado de la conexion 
+            };//cierre else
+        };//cierre function
+        //Iniciamos la conexion
+        xhr.send();
+        };//Cierra BOTON 
+        
+    </script>
+</body>
+</html>
