@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Demo Suma</title>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-10">
+                <h1>Suma</h1>
+                <hr />
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label>Ingresar USD</label>
+                    <input class="form-control" id="n1" />
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label>Ingresar EUR</label>
+                    <input class="form-control" id="n2" />
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label>Resultado</label>
+                    <input class="form-control" id="r1" />
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-9 text-right">
+                <button id="b1" class="btn btn-danger">Convertir</button>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+
+<script>
+    document.getElementById('b1').onclick = function () {
+        var xhr = new XMLHttpRequest();
+
+        //Configurar le objeto XMLHttpRequest para la conexion remota
+        //input .value nos tare lo que ingresa el usuario 
+        var n1 = document.getElementById('n1').value;
+        var n2 = document.getElementById('n2').value;
+        var datos = 'n1=' + n1 + '&n2=' + n2;
+        var url = '/API/suma.ashx?'+ datos; 
+
+        xhr.open('get', url, true);
+
+        //Opcionalmente agregamos informacion a la cabecera HEAD
+        xhr.setRequestHeader('Content-type', 'text/plain');
+
+       
+        xhr.onreadystatechange = function (e) {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                document.getElementById('r1').value = xhr.responseText;  
+            } 
+        };//cierre function
+        //Iniciamos la conexion
+        xhr.send();
+        };//Cierra BOTON 
+</script>
+</body>
+</html>
+
+
+
+

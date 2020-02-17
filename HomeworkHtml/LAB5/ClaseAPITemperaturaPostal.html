@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Conexión Remota</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-10">
+                <h1>Consulta Ciudades</h1>
+                <hr />
+                <input class="form-control" />
+                <br />
+                <button id="b1" class="btn btn-block btn-primary">Consultar</button>
+            </div>
+            <div class="col"></div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-8 text-center"> </div>
+            <div class="col"></div>
+        </div>
+
+    </div>
+    <script>
+        var app = {
+            Core: {
+                Ciudad: ''
+            },
+            Process: {
+                ConsultaCiudad: function () {
+                    var xhr = new XMLHttpRequest();
+                    var cp = document.getElementsByTagName('input')[0].value;
+                    var datos = 'es/' + cp;
+                    var url = 'https://api.zippopotam.us/' + datos;
+
+                    xhr.open('get', url, false);
+                    xhr.setRequestHeader('Content-Type', 'text/plain');
+                    xhr.send();
+
+                    if (xhr.status === 200) {
+                        var respuesta = JSON.parse(xhr.responseText);
+                        app.Core.Ciudad = respuesta.places[0]['place name'];
+                        document.getElementsByClassName('col-8')[0].innerHTML = '<h1><b>Ciudad:</b> ' + app.Core.Ciudad + '</h1>';
+
+                        //Recuperar la Temperatura
+                        app.Process.ConsultaTemperatura();
+
+                    } else alert('Uffff');
+                },
+                ConsultaTemperatura: function () {
+                    var xhr = new XMLHttpRequest();
+                    var datos = 'q=' + app.Core.Ciudad + '&units=metric&appid=613279dbd38c117661cc13b5317a5c44';
+                    var url = 'https://api.openweathermap.org/data/2.5/weather?' + datos;
+
+                    xhr.open('post', url, true);
+                    xhr.setRequestHeader('Content-Type', 'text/plain');
+                    xhr.onreadystatechange = function (e) {
+                        if (xhr.readyState === 4) {
+                            if (xhr.status === 200) {
+                                var respuesta = JSON.parse(xhr.responseText);
+                                document.getElementsByClassName('col-8')[0].innerHTML +=
+                                    '<h1><b>Temperatura:</b> ' + respuesta.main.temp + '</h1>';
+
+                                document.getElementsByClassName('col-8')[0].innerHTML +=
+                                    '<h1><b>Humedad:</b> ' + respuesta.main.humidity + '%</h1>';
+                            } else alert('Uffff');
+                        }
+                    };
+                    xhr.send();
+                }
+            },
+            Init: function () {
+                document.getElementById('b1').onclick = app.Process.ConsultaCiudad;
+            }
+        };
+
+        app.Init();
+    </script>
+</body>
+</html>
