@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Buscador de Productos</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <br />
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h1>Buscador de Productos</h1>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Descripción</label>
+                            <input class="form-control" id="i1" name="i1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-right">
+                        <button id="b1" class="btn btn-success">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="card">
+            <div class="card-header">
+                <b>Resultado de la búqueda</b>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td><b>Referencia</b></td>
+                                    <td><b>Descripción</b></td>
+                                    <td><b>Precio</b></td>
+                                    <td><b>Stock</b></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                               </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('b1').onclick = function (e) {
+            if (document.getElementById('i1').value == '') return; //si esta vacia la consulta en el html, return vacio 
+
+            var xhr = new XMLHttpRequest();
+            var url = '/API/Handler1.ashx?desc=' + document.getElementById('i1').value;
+
+            xhr.open('get', url, true);
+            xhr.onreadystatechange = function (e) {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        var datos = JSON.parse(xhr.responseText);
+
+                        if (datos.length == 0) alert('Productos no encontrados');
+                        else {
+                            document.getElementsByTagName('tbody')[0].innerHTML = '';//vaciamos el espacio de busqueda 
+                            for (var i = 0; i < datos.length; i++) {
+                                var html = '<tr>';
+                                html += '<td>' + datos[i].ProductID + '</td>';
+                                html += '<td>' + datos[i].ProductName + '</td>';
+                                html += '<td class="text-rigth">' + parseFloat(datos[i].UnitPrice).toFixed(2).replace('.', ',') + '</td>';
+                                html += '<td class="text-rigth">' + datos[i].UnitsInStock + '</td>';
+                                html += '</tr>';
+
+                                document.getElementsByTagName('tbody')[0].innerHTML += html;
+                            }
+                        }
+                    }
+                    else alert('Ufff');
+
+                    document.getElementById('wait').style.display = 'none';
+                }
+            };
+            //document.getElementById('wait').style.display = 'inline';
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
